@@ -14,4 +14,4 @@ jobs:
         server: sg1-ts3.a2hosting.com
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /main/
+        server-dir: /
