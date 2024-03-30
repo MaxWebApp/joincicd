@@ -1,29 +1,31 @@
 on: push
 name: 🚀 Deploy website on push
 jobs:
-  deploy-job1:
-    name: 🎉 Deploy to Server 1
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-    
-    - name: 📂 Sync files to Server 1
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ftp.maxwebapp.com
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: /
+	# 第一個階段
+	deploy-staging:
+		name: 🎉 Deploy to Server 1
+		runs-on: ubuntu-latest
+		steps:
+		- name: 🚚 Get latest code
+			uses: actions/checkout@v4
 
-  deploy-job2:
-    name: 🎉 Deploy to Server 2
-    runs-on: ubuntu-latest
-    steps:
-    - name: 📂 Sync files to Server 2
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: "210.61.119.143"
-        username: ${{ secrets.ftp_username2 }}
-        password: ${{ secrets.ftp_password2 }}
-        server-dir: /public_html/joincicd/
+		- name: 📂 Sync files to Server 1
+			uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+			with:
+				server: ftp.maxwebapp.com
+				username: ${{ secrets.ftp_username }}
+				password: ${{ secrets.ftp_password }}
+				server-dir: /
+
+	# 第二個階段
+	deploy-production:
+		name: 🎉 Deploy to Server 2
+		runs-on: ubuntu-latest
+		steps:
+		- name: 📂 Sync files to Server 2
+			uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+			with:
+				server: "210.61.119.143"
+				username: ${{ secrets.ftp_username2 }}
+				password: ${{ secrets.ftp_password2 }}
+				server-dir: /public_html/joincicd/
