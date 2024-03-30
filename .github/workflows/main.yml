@@ -14,8 +14,8 @@ jobs:
         server: ftp.maxwebapp.com
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /joincicd/
-	  
+        server-dir: /
+
   deploy-job2:
     name: 🎉 Deploy to Server 2
     runs-on: ubuntu-latest
