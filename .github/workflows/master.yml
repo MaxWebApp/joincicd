@@ -1,0 +1,9 @@
+on: push
+name: 🚀 Deploy website by new workflow
+jobs:
+  web-deploy:
+    name: 🎉 Deploy to github
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: echo hello world
