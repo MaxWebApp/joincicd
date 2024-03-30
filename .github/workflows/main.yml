@@ -1,7 +1,7 @@
 on: push
 name: 🚀 Deploy website on push
 jobs:
-  web-deploy:
+  deploy-job1:
     name: 🎉 Deploy to Server 1
     runs-on: ubuntu-latest
     steps:
@@ -15,11 +15,11 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         server-dir: /joincicd/
-
+	  
+  deploy-job2:
     name: 🎉 Deploy to Server 2
     runs-on: ubuntu-latest
     steps:
-    
     - name: 📂 Sync files to Server 2
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
