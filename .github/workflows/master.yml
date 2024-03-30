@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: echo hello world
+      run: echo hello world
