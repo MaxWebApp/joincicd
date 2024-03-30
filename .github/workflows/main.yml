@@ -1,14 +1,12 @@
 on: push
 name: 🚀 Deploy website on push
 jobs:
-	# 第一個階段
 	deploy-staging:
 		name: 🎉 Deploy to Server 1
 		runs-on: ubuntu-latest
 		steps:
 		- name: 🚚 Get latest code
 			uses: actions/checkout@v4
-
 		- name: 📂 Sync files to Server 1
 			uses: SamKirkland/FTP-Deploy-Action@v4.3.5
 			with:
@@ -17,7 +15,6 @@ jobs:
 				password: ${{ secrets.ftp_password }}
 				server-dir: /
 
-	# 第二個階段
 	deploy-production:
 		name: 🎉 Deploy to Server 2
 		runs-on: ubuntu-latest
