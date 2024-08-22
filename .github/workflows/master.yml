@@ -7,3 +7,20 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       run: echo hello world
+      
+  # 第一個階段
+  build:
+    name: 🎉 Deploy Staging
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    
+    - name: 📂 Sync files to Server 1
+      uses: SamKirkland/web-deploy@v1
+      with:
+        target-server: "31.220.110.125"
+        remote-user: u830147140
+        ssh-port: 65002
+        private-ssh-key: ${{ secrets.SSH_KEY }}
+        destination-path: /domains/newtonkids.tw/public_html/joincicd/
